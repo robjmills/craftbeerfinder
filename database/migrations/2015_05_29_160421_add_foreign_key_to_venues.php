@@ -14,8 +14,8 @@ class AddForeignKeyToVenues extends Migration {
 	{
         Schema::table('venues', function($table)
         {
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('features');
+            $table->unsignedInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('types');
         });
 	}
 

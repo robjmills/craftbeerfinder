@@ -14,7 +14,7 @@ class CreateTypesTable extends Migration {
 	{
 		Schema::create('types', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id')->unsigned();
 			$table->timestamps();
             $table->softDeletes();
             $table->string('type');
