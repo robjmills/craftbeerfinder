@@ -20,7 +20,7 @@ class VenuesTableSeeder extends Seeder {
             ],
             [
                 'name' => 'Small Bar',
-                'description' => 'Some bollocks',
+                'description' => 'Small bar, Big Beer',
                 'type_id'   => '2',
                 'latitude'  =>  '51.451942',
                 'longitude' => '-2.594879',
@@ -37,7 +37,8 @@ class VenuesTableSeeder extends Seeder {
                 'latitude' => $venue['latitude'],
                 'longitude' => $venue['longitude'],
                 'twitter' => $venue['twitter'],
-                'address' => $venue['address']
+                'address' => $venue['address'],
+                'type_id' => $venue['type_id']
             ]);
             $this->command->info('Creating '.$venue['name']);
         }

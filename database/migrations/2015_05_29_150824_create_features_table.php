@@ -14,6 +14,7 @@ class CreateFeaturesTable extends Migration {
 	{
 		Schema::create('features', function(Blueprint $table)
 		{
+            $table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->timestamps();
             $table->softDeletes();

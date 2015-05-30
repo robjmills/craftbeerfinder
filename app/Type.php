@@ -19,11 +19,11 @@ class Type extends Model {
 
     /**
      * A type belongs to a Venue
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
 	public function venue()
     {
-        return $this->belongsTo('App\Venue');
+        return $this->hasOne('App\Venue');
     }
 
 }

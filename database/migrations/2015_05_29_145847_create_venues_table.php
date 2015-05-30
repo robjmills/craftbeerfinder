@@ -14,9 +14,11 @@ class CreateVenuesTable extends Migration {
 	{
 		Schema::create('venues', function(Blueprint $table)
 		{
+            $table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->timestamps();
             $table->softDeletes();
+            $table->integer('type_id')->unsigned()->index();
             $table->string('name');
             $table->text('description');
             $table->string('latitude');

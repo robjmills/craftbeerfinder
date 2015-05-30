@@ -30,11 +30,11 @@ class Venue extends Model {
 
     /**
      * A venue has a type
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function types()
+    public function type()
     {
-        return $this->hasOne('App\Type');
+        return $this->belongsTo('App\Type');
     }
 
 }
