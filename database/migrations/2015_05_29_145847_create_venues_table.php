@@ -18,6 +18,7 @@ class CreateVenuesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
             $table->softDeletes();
+            $table->integer('city_id')->unsigned()->index();
             $table->integer('type_id')->unsigned()->index();
             $table->string('name');
             $table->text('description');

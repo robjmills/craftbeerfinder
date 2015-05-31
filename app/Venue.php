@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Venue extends Model {
+class Venue extends Model
+{
 
     /**
      * Database table for this model
@@ -16,14 +17,14 @@ class Venue extends Model {
      * @var array
      */
     protected $fillable = [
-        'name','description','latitude','longitude','twitter','email','address'
+        'name', 'description', 'latitude', 'longitude', 'twitter', 'email', 'address'
     ];
 
     /**
      * A venue has many features
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-	public function features()
+    public function features()
     {
         return $this->hasMany('App\Feature');
     }
@@ -35,6 +36,16 @@ class Venue extends Model {
     public function type()
     {
         return $this->belongsTo('App\Type');
+    }
+
+
+    /**
+     * A Venue belongs to a City
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city()
+    {
+        return $this->belongsTo('App\City');
     }
 
 }
