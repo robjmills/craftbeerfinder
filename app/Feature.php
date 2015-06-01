@@ -21,9 +21,9 @@ class Feature extends Model {
      * A feature belongs to a Venue
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function venue()
+    public function venues()
     {
-        return $this->belongsTo('App\Venue');
+        return $this->belongsToMany('App\Venue');
     }
 
 }

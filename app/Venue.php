@@ -26,7 +26,7 @@ class Venue extends Model
      */
     public function features()
     {
-        return $this->hasMany('App\Feature');
+        return $this->belongsToMany('App\Feature');
     }
 
     /**
