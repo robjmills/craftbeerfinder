@@ -17,7 +17,7 @@ class Venue extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'latitude', 'longitude', 'twitter', 'email', 'address'
+        'name', 'description', 'latitude', 'longitude', 'twitter', 'email', 'address','city_id','type_id'
     ];
 
     /**
@@ -46,6 +46,16 @@ class Venue extends Model
     public function city()
     {
         return $this->belongsTo('App\City');
+    }
+
+    /**
+     * Get a list of feature IDs associated to the current Venue
+     *
+     * @return mixed
+     */
+    public function getFeatureListAttribute()
+    {
+        return $this->features->lists('id');
     }
 
 }

@@ -24,6 +24,8 @@ class VenueRequest extends Request {
 		return [
 			'name'  =>  'required',
 			'description'  =>  'required',
+			'city_id'  =>  'required|integer',
+			'type_id'  =>  'required|integer',
 			'latitude'  =>  'required',
 			'longitude'  =>  'required',
 			'address'  =>  'required'

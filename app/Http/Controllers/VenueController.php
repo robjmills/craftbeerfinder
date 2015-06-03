@@ -1,9 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use App\City;
+use App\Feature;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\VenueRequest;
+use App\Type;
 use App\Venue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -26,7 +29,8 @@ class VenueController extends Controller {
 	 */
 	public function index()
 	{
-		return view('venues.index');
+        $venues = Venue::all();
+		return view('venues.index',compact('venues'));
 	}
 
 	/**
@@ -36,7 +40,10 @@ class VenueController extends Controller {
 	 */
 	public function create()
 	{
-		return view('venues.create');
+        $features = Feature::lists('feature','id');
+        $cities = City::lists('name','id');
+        $types = Type::lists('type','id');
+		return view('venues.create',compact('features','cities','types'));
 	}
 
     /**
@@ -47,7 +54,9 @@ class VenueController extends Controller {
      */
 	public function store(VenueRequest $request)
 	{
-		Venue::create( $request->all() );
+		$venue = Venue::create( $request->all() );
+        $venue->features()->attach( $request->input('feature_list') );
+
         return redirect('venues')->with('flash_message','Venue Created!');
 	}
 
@@ -71,8 +80,11 @@ class VenueController extends Controller {
 	public function edit($id)
 	{
 		$venue = Venue::findOrFail($id);
+        $features = Feature::lists('feature','id');
+        $cities = City::lists('name','id');
+        $types = Type::lists('type','id');
 
-        return view('venues.edit',compact('venue'));
+        return view('venues.edit',compact('venue','features','cities','types'));
 	}
 
     /**
@@ -87,7 +99,9 @@ class VenueController extends Controller {
 		$venue = Venue::findOrFail($id);
         $venue->update($request->all());
 
-        return redirect('venues');
+        $venue->features()->sync( $request->input('feature_list') );
+
+        return redirect('venues')->with('flash_message','Venue Updated!');
 	}
 
 	/**
