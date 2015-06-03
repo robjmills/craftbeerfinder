@@ -60,26 +60,27 @@ class VenueController extends Controller {
         return redirect('venues')->with('flash_message','Venue Created!');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param Venue $venue
+     * @return Response
+     * @internal param int $id
+     */
+	public function show(Venue $venue)
 	{
-		//
+		return view('venues.show',compact('venue'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Venue $venue
+     * @return Response
+     * @internal param int $id
+     */
+	public function edit(Venue $venue)
 	{
-		$venue = Venue::findOrFail($id);
         $features = Feature::lists('feature','id');
         $cities = City::lists('name','id');
         $types = Type::lists('type','id');
@@ -90,15 +91,14 @@ class VenueController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param Venue $venue
      * @param VenueRequest $request
      * @return Response
+     * @internal param int $id
      */
-	public function update($id, VenueRequest $request)
+	public function update(Venue $venue, VenueRequest $request)
 	{
-		$venue = Venue::findOrFail($id);
         $venue->update($request->all());
-
         $venue->features()->sync( $request->input('feature_list') );
 
         return redirect('venues')->with('flash_message','Venue Updated!');
