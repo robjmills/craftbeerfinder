@@ -45,8 +45,16 @@
 
 <div class="form-group">
     {!! Form::label('feature_list', 'Features:') !!}
-    {!! Form::select('feature_list[]',$features, null, ['class' => 'form-control','multiple']) !!}
+    {!! Form::select('feature_list[]',$features, null, ['id' => 'feature_list', 'class' => 'form-control','multiple']) !!}
 </div>
 
 
 {!! Form::submit($submit,['class' => 'btn btn-primary form-control']) !!}
+
+@section('scripts')
+    <script type="text/javascript">
+        $('#feature_list').select2({
+            placeholder: "choose features"
+        });
+    </script>
+@stop
