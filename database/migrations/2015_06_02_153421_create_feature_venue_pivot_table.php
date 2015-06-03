@@ -14,9 +14,12 @@ class CreateFeatureVenuePivotTable extends Migration {
 	{
 		Schema::create('feature_venue', function(Blueprint $table)
 		{
-			$table->increments('id');
-            $table->integer('feature_id')->unsigned();
-            $table->integer('venue_id')->unsigned();
+            $table->integer('feature_id')->unsigned()->index();
+            $table->foreign('feature_id')->references('id')->on('features');
+            $table->integer('venue_id')->unsigned()->index();
+            $table->foreign('venue_id')->references('id')->on('venues');
+
+            $table->timestamps();
 		});
 	}
 

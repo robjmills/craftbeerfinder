@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration {
             $table->softDeletes();
             $table->text('post');
             $table->dateTime('published_at');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
 
 		});
