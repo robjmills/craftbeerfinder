@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Redirect;
 
 class VenueController extends Controller {
 
+
+    /**
+     * make sure there is an authenticated user first
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -39,7 +48,7 @@ class VenueController extends Controller {
 	public function store(VenueRequest $request)
 	{
 		Venue::create( $request->all() );
-        return redirect('venues');
+        return redirect('venues')->with('flash_message','Venue Created!');
 	}
 
 	/**
