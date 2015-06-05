@@ -9,17 +9,21 @@
     <div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th class="text-center">Action</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Venue Type</th>
+                    <th>City</th>
+                    <th class="text-center">Action</th>
+                </tr>
             </thead>
             <tbody>
             @forelse($venues as $venue)
                 <tr>
-                    <td>{{ $venue->id }}</td>
+                    <th scope="row">{{ $venue->id }}</th>
                     <td>{{ $venue->name }}</td>
+                    <td>{{ $venue->type->type }}</td>
+                    <td>{{ $venue->city->name }}</td>
                     <td class="text-center">
                         {!! Form::open(['route' => ['venues.destroy',$venue->id], 'role' => 'form', 'method' => 'delete','onsubmit' => 'return confirm("Are you sure you want to delete this venue?");']) !!}
                         <div class="btn-group">
