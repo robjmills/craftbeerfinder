@@ -15,7 +15,7 @@ class Post extends Model {
      *
      * @var array
      */
-    protected $fillable = ['post','published_at','user_id'];
+    protected $fillable = ['title','venue_id','content','datetime_start','datetime_end','user_id'];
 
     /**
      * A post belongs to a User
@@ -23,6 +23,14 @@ class Post extends Model {
      */
 	public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * A post belongs to a Venue
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function venue(){
+        return $this->belongsTo('App\Venue');
     }
 
 }

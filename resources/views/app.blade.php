@@ -35,6 +35,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/home') }}">Home</a></li>
 					<li><a href="{{ route('venues.index') }}">Venues</a></li>
+					<li><a href="{{ route('posts.index') }}">Posts</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

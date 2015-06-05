@@ -17,10 +17,14 @@ class CreatePostsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
             $table->softDeletes();
-            $table->text('post');
-            $table->dateTime('published_at');
+            $table->string('title');
+            $table->text('content');
+            $table->dateTime('datetime_start');
+            $table->dateTime('datetime_end');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('venue_id')->unsigned()->index();
+            $table->foreign('venue_id')->references('id')->on('venues');
 
 		});
 	}

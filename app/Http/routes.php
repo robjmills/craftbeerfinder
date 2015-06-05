@@ -20,4 +20,5 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route:resource('venues','VenueController');
+Route::resource('posts','PostController');
+Route::resource('venues','VenueController');
