@@ -25,13 +25,13 @@
                     <td class="text-center">
                         {!! Form::open(['route' => ['posts.destroy',$post->id], 'role' => 'form', 'method' => 'delete','onsubmit' => 'return confirm("Are you sure you want to delete this post?");']) !!}
                         <div class="btn-group">
-                            <a class='btn btn-default btn-xs' href="{{ route('posts.edit',$post->id) }}" title="edit">
+                            <a class='btn btn-default btn-sm' href="{{ route('posts.edit',$post->id) }}" title="edit">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
-                            <a class='btn btn-success btn-xs' href="{{ route('posts.show',$post->id) }}" title="view">
+                            <a class='btn btn-default btn-sm' href="{{ route('posts.show',$post->id) }}" title="view">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-                            <button class="btn btn-danger btn-xs" title="delete">
+                            <button class="btn btn-default btn-sm" title="delete">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
                         </div>
