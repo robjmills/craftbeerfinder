@@ -99,7 +99,7 @@ class VenueController extends Controller {
 	public function update(Venue $venue, VenueRequest $request)
 	{
         $venue->update($request->all());
-        $venue->features()->sync( $request->input('feature_list') );
+        $venue->features()->sync( (array) $request->input('feature_list') );
 
         return redirect('venues')->with('flash_message','Venue Updated!');
 	}

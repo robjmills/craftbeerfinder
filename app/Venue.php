@@ -55,7 +55,7 @@ class Venue extends Model
      */
     public function getFeatureListAttribute()
     {
-        return $this->features->lists('id');
+        return $this->features->lists('id')->all();
     }
 
 }
