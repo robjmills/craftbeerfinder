@@ -110,9 +110,11 @@ class VenueController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Venue $venue)
 	{
-		//
+        $venue->features()->sync([]);
+		$venue->delete();
+        return redirect('venues')->with('flash_message','Venue Deleted!');
 	}
 
 }

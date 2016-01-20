@@ -7,10 +7,12 @@ class VenuesTableSeeder extends Seeder {
 
     public function run()
     {
+
+        $faker = Faker\Factory::create();
+
         $venues = [
            [
                 'name' => 'Brewdog',
-                'description' => 'Crafty dog bar',
                 'city_id'   => '1',
                 'type_id'   => '1',
                 'latitude'  =>  '51.453536',
@@ -21,7 +23,6 @@ class VenuesTableSeeder extends Seeder {
             ],
             [
                 'name' => 'Small Bar',
-                'description' => 'Small bar, Big Beer',
                 'city_id'   => '1',
                 'type_id'   => '2',
                 'latitude'  =>  '51.451942',
@@ -32,7 +33,6 @@ class VenuesTableSeeder extends Seeder {
             ],
             [
                 'name' => 'The Hillgrove Porter Stores',
-                'description' => 'Dawkins pub etc',
                 'city_id'   => '1',
                 'type_id'   => '2',
                 'latitude'  =>  '51.4630439002269',
@@ -46,13 +46,16 @@ class VenuesTableSeeder extends Seeder {
         foreach ($venues as $venue) {
             Venue::create([
                 'name' => $venue['name'],
-                'description' => $venue['description'],
+                'description' => $faker->paragraph(),
                 'latitude' => $venue['latitude'],
                 'longitude' => $venue['longitude'],
                 'twitter' => $venue['twitter'],
                 'address' => $venue['address'],
                 'type_id' => $venue['type_id'],
-                'city_id' => $venue['city_id']
+                'city_id' => $venue['city_id'],
+                'image-small' => $faker->imageUrl(100,100,'nightlife'),
+                'image-large' => $faker->imageUrl(400,200,'nightlife'),
+
             ]);
             $this->command->info('Creating '.$venue['name']);
         }

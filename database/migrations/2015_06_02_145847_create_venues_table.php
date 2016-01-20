@@ -22,6 +22,8 @@ class CreateVenuesTable extends Migration {
             $table->integer('type_id')->unsigned()->index();
             $table->foreign('type_id')->references('id')->on('types');
             $table->string('name');
+            $table->string('image-small');
+            $table->string('image-large');
             $table->text('description');
             $table->string('latitude');
             $table->string('longitude');
